@@ -19,7 +19,7 @@ public class Sender {
     }
 
     private void send(String text) {
-        try (JMSContext jcontext = cf.createContext("test", "test");) {
+        try (JMSContext jcontext = cf.createContext("test", "test")) {
             JMSProducer mp = jcontext.createProducer();
             mp.send(d, text);
         } catch (JMSRuntimeException re) {

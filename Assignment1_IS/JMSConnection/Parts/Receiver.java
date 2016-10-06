@@ -20,7 +20,7 @@ public class Receiver {
 
     private String receive() {
         String msg = null;
-        try (JMSContext jcontex = cf.createContext("test", "test");) {
+        try (JMSContext jcontex = cf.createContext("test", "test")) {
             JMSConsumer mc = jcontex.createConsumer(d);
             msg = mc.receiveBody(String.class);
         } catch (JMSRuntimeException re) {

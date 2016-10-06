@@ -22,12 +22,13 @@
       <sourceFolder url="file://$MODULE_DIR$/JMSSender" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/JMSReceiver" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/JMSConnection" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Crawler" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jboss-client" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="JBoss 10.2.0.Final" level="application_server_libraries" />
-    <orderEntry type="library" name="Java EE 6-Java EE 6" level="application" />
     <orderEntry type="library" name="jsoup-1.9.2" level="project" />
+    <orderEntry type="library" name="jboss-client" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="application" />
   </component>
 </module>
