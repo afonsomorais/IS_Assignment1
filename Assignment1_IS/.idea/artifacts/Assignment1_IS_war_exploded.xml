@@ -8,8 +8,9 @@
           <element id="module-output" name="Assignment1_IS" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="application" name="jsoup-1.9.2" />
-          <element id="library" level="project" name="Java EE 6-Java EE 6" />
+          <element id="library" level="project" name="jsoup-1.9.2" />
+          <element id="library" level="application" name="Java EE 6-Java EE 6" />
+          <element id="library" level="project" name="jboss-client" />
         </element>
       </element>
     </root>

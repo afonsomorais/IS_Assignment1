@@ -25,9 +25,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="JBoss 10.2.0.Final1" level="application_server_libraries" />
-    <orderEntry type="library" name="jsoup-1.9.2" level="application" />
-    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" name="jboss-client" level="application" />
+    <orderEntry type="library" name="jboss-client" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="JBoss 10.2.0.Final" level="application_server_libraries" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="application" />
+    <orderEntry type="library" name="jsoup-1.9.2" level="project" />
   </component>
 </module>
