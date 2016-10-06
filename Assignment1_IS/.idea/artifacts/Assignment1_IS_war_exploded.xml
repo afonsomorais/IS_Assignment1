@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Assignment1_IS:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Assignment1_IS_war_exploded.war</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Assignment1_IS/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Assignment1_IS" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="jsoup-1.9.2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
