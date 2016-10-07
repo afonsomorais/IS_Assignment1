@@ -1,27 +1,34 @@
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.jsoup.Jsoup;
-import org.jsoup.helper.Validate;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class Crawler {
 
     public static void main(String[] args) throws IOException {
         String url = "https://www.rio2016.com/en/medal-count-country";
-        System.out.println("Fetching "+url+"...");
+        //System.out.println("Fetching "+url+"...");
 
         Document doc = Jsoup.connect(url).get();
-        /*Elements links = doc.select("a[href]");
-        Elements media = doc.select("[src]");
-        Elements imports = doc.select("link[href]");*/
         Element tableMedals = doc.select("table").get(2);
         Elements rows = tableMedals.select("tr");
-        
-        System.out.println("La dentro: "+rows.get(124).toString());
+        Elements cenas = tableMedals.select("td");
+        //System.out.println(rows.get(3).text());
+        for(int i = 1; i < rows.size(); i++){
+            /*String [] token = rows.get(i).text().split(" ");
+            int position = Integer.parseInt(token[0]);
+            String abrv = token[1];
+            int nMedals = Integer.parseInt(token[1]);*/
+            int nGold;
+            int nSilver;
+            int nBronze;
+            ArrayList <String> winners = new ArrayList<String>();
+
+            System.out.println(cenas.get(1).text());
+        }
         //System.out.println("ola: "+ tableMedals.text().toString());
         //System.out.println("Media: "+tableMedals.size());
 

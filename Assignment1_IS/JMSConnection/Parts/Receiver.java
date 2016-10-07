@@ -31,7 +31,6 @@ public class Receiver {
 
     public static void main(String[] args) throws NamingException {
         Receiver r = new Receiver();
-
         String msg = r.receive();
         System.out.println("Message: " + msg);
     }
