@@ -28,7 +28,15 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="JBoss 10.2.0.Final" level="application_server_libraries" />
     <orderEntry type="library" name="jsoup-1.9.2" level="project" />
-    <orderEntry type="library" name="jboss-client" level="project" />
-    <orderEntry type="library" name="Java EE 6-Java EE 6" level="application" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/wildfly-10.1.0.Final/bin/client/jboss-client.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>

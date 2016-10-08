@@ -1,3 +1,4 @@
+import org.jcp.xml.dsig.internal.SignerOutputStream;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -8,29 +9,134 @@ import java.util.ArrayList;
 
 public class Crawler {
 
-    public static void main(String[] args) throws IOException {
+    static ArrayList<Integer> medalhas_paises = new ArrayList<Integer>();
+
+
+    public Crawler() throws IOException {
+    }
+
+    public static int get_id_byname(String name) throws IOException {
+
+        int index = 0;
+
         String url = "https://www.rio2016.com/en/medal-count-country";
         //System.out.println("Fetching "+url+"...");
 
         Document doc = Jsoup.connect(url).get();
-        Element tableMedals = doc.select("table").get(2);
-        Elements rows = tableMedals.select("tr");
-        Elements cenas = tableMedals.select("td");
-        //System.out.println(rows.get(3).text());
-        for(int i = 1; i < rows.size(); i++){
-            /*String [] token = rows.get(i).text().split(" ");
-            int position = Integer.parseInt(token[0]);
-            String abrv = token[1];
-            int nMedals = Integer.parseInt(token[1]);*/
-            int nGold;
-            int nSilver;
-            int nBronze;
-            ArrayList <String> winners = new ArrayList<String>();
 
-            System.out.println(cenas.get(1).text());
+        int contador = 86;
+
+        for(int i=0;i<contador;i++){
+            Element tableMedals = doc.select("tr.table-medal-countries__link-table").get(i);
+            Element tableMedals2 = tableMedals.child(1);
+            //System.out.println( i + " = " + tableMedals2.text().toString());
+            if(tableMedals2.text().toString().equals(name)){
+                return i;
+            }
         }
-        //System.out.println("ola: "+ tableMedals.text().toString());
+
+        return -1;
+    }
+
+    public static void find_country_medals(String name) throws IOException {
+
+        String url = "https://www.rio2016.com/en/medal-count-country";
+        //System.out.println("Fetching "+url+"...");
+
+        Document doc = Jsoup.connect(url).get();
+
+        int index = get_id_byname(name);
+
+        Element tableMedals = doc.select("tr.table-medal-countries__link-table").get(index);
+        Element tableMedals2 = tableMedals.child(1);
+        Elements medals = tableMedals2.siblingElements();
+
+        //System.out.println("MEDALHAS: " + medals.text());
+
+        int goldMedals = Integer.parseInt(medals.get(2).text());
+        int silverMedals = Integer.parseInt(medals.get(3).text());
+        int bronzeMedals = Integer.parseInt(medals.get(4).text());
+        int total_medals = goldMedals + silverMedals + bronzeMedals;
+
+        System.out.println("O país " + tableMedals2.text() + " : " + goldMedals + " : " + silverMedals + " : " + bronzeMedals );
+    }
+
+    public static void make_arraylist() throws IOException {
+
+        int contador = 86;
+
+        String url = "https://www.rio2016.com/en/medal-count-country";
+        //System.out.println("Fetching "+url+"...");
+
+        Document doc = Jsoup.connect(url).get();
+
+
+        for(int i=0;i<contador;i++){
+            Element tableMedals = doc.select("tr.table-medal-countries__link-table").get(i);
+            Element tableMedals2 = tableMedals.child(1);
+            Elements medals = tableMedals2.siblingElements();
+
+            //System.out.println("MEDALHAS: " + medals.text());
+
+            int goldMedals = Integer.parseInt(medals.get(2).text());
+            int silverMedals = Integer.parseInt(medals.get(3).text());
+            int bronzeMedals = Integer.parseInt(medals.get(4).text());
+            int total_medals = goldMedals + silverMedals + bronzeMedals;
+
+            medalhas_paises.add(i,total_medals);
+
+        }
+
+      /*  for(int a=0;a<medalhas_paises.size();a++){
+            System.out.println(medalhas_paises.get(a));
+        }*/
+
+    }
+
+
+
+    public static void find_medals_athlete(String name) throws IOException {
+
+        int contador = 86;
+
+        String url = "https://www.rio2016.com/en/medal-count-country";
+        //System.out.println("Fetching "+url+"...");
+
+        Document doc = Jsoup.connect(url).timeout(100000000).get();
+
+        Elements tableMedals = doc.select("tr.table-expand");
+
+
+        for(int i=0;i<contador;i++){
+            for(int j=0;j<medalhas_paises.get(i);j++){
+                Elements athlete_medals = tableMedals.get(i).child(0).child(0).child(0).child(j).child(0).siblingElements();
+                if(name.equals(athlete_medals.get(2).text())){
+                    String medal = tableMedals.get(i).child(0).child(0).child(0).child(j).child(0).text();
+                    System.out.println(medal + " " + athlete_medals.get(1).text() + " " + athlete_medals.get(0).text());
+                }
+            }
+        }
+
+    }
+
+
+
+
+    public static void main(String[] args) throws IOException {
+
+        make_arraylist();
+        find_medals_athlete("MONTEIRO Telma");
+
+        //make_arraylist();
+
+       // make_arraylist();
+
+        //System.out.println(rows.get(3).text());
+
+        //System.out.println("FUNCAO: " + get_id_byname("POR",86));
         //System.out.println("Media: "+tableMedals.size());
+      /*  int index = get_id_byname("POR");
+        find_country_medals(index);*/
 
 
 
